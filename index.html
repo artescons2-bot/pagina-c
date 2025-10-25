@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artes con S</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    body {
+      background: linear-gradient(to bottom, #0b1d3a, #1c2e5c);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+    }
+    /* Hero */
+    .hero {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      background-attachment: fixed;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-family: 'Great Vibes', cursive;
+      text-shadow: 2px 2px 8px #000;
+    }
+
+    /* Navbar */
+    .custom-navbar {
+      background: linear-gradient(to right, #0b1d3a, #1c2e5c);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      transition: all 0.4s ease;
+    }
+    .custom-navbar .navbar-brand {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: #f5d076 !important;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+      transition: all 0.4s ease;
+    }
+    .custom-navbar.scrolled .navbar-brand {
+      font-size: 1.5rem;
+      color: #fff !important;
+      text-shadow: none;
+    }
+    .custom-navbar .nav-link {
+      font-family: 'Poppins', sans-serif;
+      color: #fff !important;
+      margin-left: 20px;
+      font-size: 1.2rem;
+      padding: 0.5rem 0.7rem;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+    .custom-navbar .nav-link:hover {
+      color: #f5d076 !important;
+      transform: scale(1.1);
+    }
+
+    /* Pinturas */
+    #pinturas .row > .col-md-4 { display: flex; }
+    .hover-art {
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      background-color: rgba(255,255,255,0.05);
+      border-radius:15px;
+      padding:15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow:hidden;
+    }
+    .hover-art:hover { transform: translateY(-10px) rotate(-1deg); box-shadow: 0 15px 30px rgba(255,255,150,0.6);}
+    .card-title { font-weight:700; color:#ffd700; text-shadow:1px 1px 5px #00008b;}
+    .card-text { color:#e0e0ff; }
+
+    /* Botón Pinturas */
+    #pinturas .btn-encargar { margin-top:15px; font-size:1.1rem; }
+
+    /* Piñatas */
+    #pinatas img { width:80%; }
+
+    /* Títulos */
+    h2.section-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-align:center;
+      color:#f5d076;
+      text-shadow:1px 1px 4px rgba(0,0,0,0.5);
+      margin-bottom:2rem;
+      position: relative;
+    }
+    h2.section-title::after {
+      content:'';
+      width:50px; height:2px; background:#f5d076;
+      display:block; margin:8px auto 0;
+      border-radius:2px; box-shadow:0 0 5px rgba(0,0,0,0.3);
+    }
+
+    /* Nuevas secciones */
+    .card.bg-dark {
+      background-color: rgba(11, 29, 58, 0.7) !important;
+      transition: transform 0.3s ease;
+    }
+    .card.bg-dark:hover {
+      transform: translateY(-5px);
+    }
+    .border-warning {
+      border-color: #f5d076 !important;
+    }
+    .text-warning {
+      color: #f5d076 !important;
+    }
+    .btn-outline-warning {
+      color: #f5d076;
+      border-color: #f5d076;
+    }
+    .btn-outline-warning:hover {
+      background-color: #f5d076;
+      color: #0b1d3a;
+    }
+    .bg-warning {
+      background-color: #f5d076 !important;
+    }
+    .section-subtitle {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #f5d076;
+      margin-bottom: 1rem;
+    }
+
+    /* Modal mejorado */
+    .modal-content {
+      background: linear-gradient(145deg, #1c2e5c, #0b1d3a);
+      color: #fff;
+      border-radius: 20px;
+      border: 1px solid #f5d076;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    .modal-header {
+      border-bottom: 1px solid rgba(245, 208, 118, 0.3);
+      padding: 20px;
+      background: rgba(11, 29, 58, 0.5);
+      border-radius: 20px 20px 0 0 !important;
+    }
+    .modal-title {
+      font-family: 'Great Vibes', cursive;
+      color: #f5d076;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+    .btn-close {
+      background-color: #f5d076 !important;
+      opacity: 1;
+      border-radius: 50%;
+    }
+    .modal-body {
+      padding: 30px;
+    }
+    .form-label {
+      color: #f5d076;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .form-select, .form-control {
+      color: #fff;
+      background: rgba(11, 29, 58, 0.7);
+      border: 1px solid #f5d076;
+      border-radius: 10px;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      transition: all 0.3s;
+    }
+    .form-select:focus, .form-control:focus {
+      background: rgba(11, 29, 58, 0.9);
+      border-color: #ffd700;
+      box-shadow: 0 0 0 0.25rem rgba(245, 208, 118, 0.25);
+    }
+    .form-select option {
+      background: #0b1d3a;
+      color: #fff;
+    }
+    .form-control::placeholder {
+      color: #a0a0d0;
+    }
+    .canvas-container {
+      background: rgba(11, 29, 58, 0.5);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px 0;
+      border: 1px dashed #f5d076;
+    }
+    #canvasVista {
+      border: 2px solid #f5d076;
+      border-radius: 10px;
+      display: block;
+      margin: 15px auto;
+      background: #0b1d3a;
+      box-shadow: 0 0 20px rgba(245, 208, 118, 0.2);
+    }
+    #orientacion, #dimensionesMostradas {
+      color: #f5d076;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 15px;
+    }
+    .modal-footer {
+      border-top: 1px solid rgba(245, 208, 118, 0.3);
+      padding: 20px;
+      background: rgba(11, 29, 58, 0.5);
+      border-radius: 0 0 20px 20px !important;
+    }
+    .btn-secondary {
+      background: #6c757d;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover {
+      background: #5a6268;
+      transform: translateY(-2px);
+    }
+    .btn-warning {
+      background: linear-gradient(to right, #f5d076, #e6b85c);
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .btn-warning:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(245, 208, 118, 0.4);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0b1d3a;
+      margin-top: 50px;
+      border-top: 1px solid rgba(245, 208, 118, 0.3);
+    }
+    footer a {
+      transition: color 0.3s ease;
+      margin: 0 5px;
+    }
+    footer a:hover {
+      color: #f5d076 !important;
+    }
+    footer .fab {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Artes con S</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#pinturas">Pinturas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pinatas">Piñatas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#proceso">Proceso</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#preguntas">Preguntas</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div>
+    <h1>Artes con S</h1>
+    <p>Pinturas y Piñatas hechas a tu medida ✨</p>
+    <a href="#pinturas" class="btn btn-warning btn-lg">Encargar ahora</a>
+  </div>
+</section>
+
+<!-- Pinturas -->
+<section id="pinturas" class="container py-5">
+  <h2 class="section-title">Obras de Pintura</h2>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card hover-art text-center">
+        <img src="img/arte1.jpeg" alt="Pintura 1" class="card-img-top mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Pintura a medida</h5>
+          <p class="card-text">Elige tamaño y estilo, inspiradas en la noche estrellada.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card hover-art text-center">
+        <img src="img/arte2.jpeg" alt="Pintura 2" class="card-img-top mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Arte único</h5>
+          <p class="card-text">Obras personalizadas para decorar tus espacios.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card hover-art text-center">
+        <img src="img/arte3.jpeg" alt="Pintura 3" class="card-img-top mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Detalles especiales</h5>
+          <p class="card-text">Entrega con acabados de alta calidad y dedicación.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-4">
+    <button class="btn btn-warning btn-encargar" onclick="abrirModal('pintura')">Encarga tu pintura</button>
+  </div>
+</section>
+
+<!-- Piñatas -->
+<section id="pinatas" class="container py-5">
+  <h2 class="section-title">Piñatas a Pedido</h2>
+  <div class="row align-items-center g-4">
+    <div class="col-md-6">
+      <img src="img/piñata.jpeg" alt="Piñata 1" class="img-fluid rounded shadow-lg">
+    </div>
+    <div class="col-md-6 d-flex flex-column justify-content-center">
+      <h3 class="section-subtitle">Piñatas Temáticas</h3>
+      <p>Diseños únicos para cumpleaños, fiestas y celebraciones. ¡Hechas a mano y personalizadas según tu gusto!</p>
+      <button class="btn btn-warning btn-lg mt-3 align-self-start" onclick="abrirModal('pinata')">Encargar Piñata</button>
+    </div>
+  </div>
+</section>
+
+<!-- Nuestro Proceso -->
+<section id="proceso" class="container py-5">
+  <h2 class="section-title">Nuestro Proceso Creativo</h2>
+  <div class="row g-4">
+    <div class="col-md-3">
+      <div class="card text-center bg-dark border-warning">
+        <div class="card-body">
+          <div class="rounded-circle bg-warning mx-auto d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+            <i class="fas fa-comments text-dark fa-2x"></i>
+          </div>
+          <h5 class="card-title mt-3">1. Consulta</h5>
+          <p class="card-text">Platicamos sobre tu idea y creamos un boceto personalizado.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card text-center bg-dark border-warning">
+        <div class="card-body">
+          <div class="rounded-circle bg-warning mx-auto d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+            <i class="fas fa-pencil-alt text-dark fa-2x"></i>
+          </div>
+          <h5 class="card-title mt-3">2. Diseño</h5>
+          <p class="card-text">Creamos el diseño final basado en tu visión y aprobación.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card text-center bg-dark border-warning">
+        <div class="card-body">
+          <div class="rounded-circle bg-warning mx-auto d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+            <i class="fas fa-paint-brush text-dark fa-2x"></i>
+          </div>
+          <h5 class="card-title mt-3">3. Creación</h5>
+          <p class="card-text">Nuestros artistas trabajan con dedicación en cada detalle.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card text-center bg-dark border-warning">
+        <div class="card-body">
+          <div class="rounded-circle bg-warning mx-auto d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+            <i class="fas fa-check-circle text-dark fa-2x"></i>
+          </div>
+          <h5 class="card-title mt-3">4. Entrega</h5>
+          <p class="card-text">Recibes tu obra única lista para disfrutar y decorar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonios -->
+<section id="testimonios" class="container py-5">
+  <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card bg-dark border-warning h-100">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-3">
+            <div class="bg-secondary rounded-circle me-3" style="width: 50px; height: 50px;"></div>
+            <div>
+              <h5 class="card-title mb-0">María López</h5>
+              <div class="text-warning">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p class="card-text">"¡La pintura superó mis expectativas! El detalle y la calidad son increíbles. Definitivamente volveré a encargar."</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-dark border-warning h-100">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-3">
+            <div class="bg-secondary rounded-circle me-3" style="width: 50px; height: 50px;"></div>
+            <div>
+              <h5 class="card-title mb-0">Carlos Rodríguez</h5>
+              <div class="text-warning">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+          <p class="card-text">"La piñata para el cumpleaños de mi hija fue un éxito. Los niños y adultos quedaron fascinados con el diseño."</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-dark border-warning h-100">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-3">
+            <div class="bg-secondary rounded-circle me-3" style="width: 50px; height: 50px;"></div>
+            <div>
+              <h5 class="card-title mb-0">Ana Martínez</h5>
+              <div class="text-warning">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p class="card-text">"Excelente servicio y atención personalizada. Me encantó cómo capturaron exactamente lo que imaginaba."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Preguntas Frecuentes -->
+<section id="preguntas" class="container py-5">
+  <h2 class="section-title">Preguntas Frecuentes</h2>
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="accordion accordion-flush" id="accordionPreguntas">
+        <div class="accordion-item bg-dark border-warning mb-3">
+          <h2 class="accordion-header" id="pregunta1">
+            <button class="accordion-button collapsed bg-dark text-warning fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#respuesta1">
+              ¿Cuánto tiempo tardan en entregar un pedido?
+            </button>
+          </h2>
+          <div id="respuesta1" class="accordion-collapse collapse" data-bs-parent="#accordionPreguntas">
+            <div class="accordion-body text-white">
+              <p>El tiempo de entrega varía según la complejidad del pedido:</p>
+              <ul>
+                <li>Pinturas: 7-14 días hábiles</li>
+                <li>Piñatas: 3-5 días hábiles</li>
+                <li>Pedidos personalizados complejos: 15-20 días hábiles</li>
+              </ul>
+              <p>Te mantendremos informado durante todo el proceso de creación.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item bg-dark border-warning mb-3">
+          <h2 class="accordion-header" id="pregunta2">
+            <button class="accordion-button collapsed bg-dark text-warning fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#respuesta2">
+              ¿Puedo hacer cambios en mi pedido después de haberlo encargado?
+            </button>
+          </h2>
+          <div id="respuesta2" class="accordion-collapse collapse" data-bs-parent="#accordionPreguntas">
+            <div class="accordion-body text-white">
+              <p>Sí, puedes solicitar cambios siempre que el proceso de creación aún no haya comenzado. Una vez iniciado el trabajo, solo se podrán realizar ajustes menores.</p>
+              <p>Para cambios importantes en pedidos en proceso, puede aplicar cargos adicionales.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item bg-dark border-warning mb-3">
+          <h2 class="accordion-header" id="pregunta3">
+            <button class="accordion-button collapsed bg-dark text-warning fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#respuesta3">
+              ¿Ofrecen envío a domicilio?
+            </button>
+          </h2>
+          <div id="respuesta3" class="accordion-collapse collapse" data-bs-parent="#accordionPreguntas">
+            <div class="accordion-body text-white">
+              <p>Sí, ofrecemos servicio de envío a toda la República Mexicana. El costo del envío depende de la ubicación y tamaño del pedido.</p>
+              <p>También puedes recoger tu pedido directamente en nuestro taller sin costo adicional.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item bg-dark border-warning mb-3">
+          <h2 class="accordion-header" id="pregunta4">
+            <button class="accordion-button collapsed bg-dark text-warning fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#respuesta4">
+              ¿Qué materiales utilizan para las pinturas y piñatas?
+            </button>
+          </h2>
+          <div id="respuesta4" class="accordion-collapse collapse" data-bs-parent="#accordionPreguntas">
+            <div class="accordion-body text-white">
+              <p><strong>Pinturas:</strong> Utilizamos lienzos de alta calidad, pinturas acrílicas profesionales y barnices protectores UV.</p>
+              <p><strong>Piñatas:</strong> Papel de calidad artesanal, pegamento especial y acabados con detalles personalizados.</p>
+              <p>Todos nuestros materiales son seguros, duraderos y respetuosos con el medio ambiente.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item bg-dark border-warning mb-3">
+          <h2 class="accordion-header" id="pregunta5">
+            <button class="accordion-button collapsed bg-dark text-warning fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#respuesta5">
+              ¿Pueden replicar una pintura famosa o hay restricciones de derechos de autor?
+            </button>
+          </h2>
+          <div id="respuesta5" class="accordion-collapse collapse" data-bs-parent="#accordionPreguntas">
+            <div class="accordion-body text-white">
+              <p>Podemos crear interpretaciones inspiradas en obras famosas con modificaciones personales que las hagan únicas. Sin embargo, no reproducimos obras protegidas por derechos de autor de manera exacta.</p>
+              <p>Nos especializamos en crear obras originales basadas en tu visión personal.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+      <div class="col-lg-8">
+        <div class="card bg-dark border-warning">
+          <div class="card-body">
+            <h3 class="text-warning">¿Tienes más preguntas?</h3>
+            <p>Envíanos tu consulta y te responderemos lo antes posible:</p>
+            <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
+              <div class="mb-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" class="form-control bg-secondary border-warning text-white" id="name" name="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control bg-secondary border-warning text-white" id="email" name="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Mensaje</label>
+                <textarea class="form-control bg-secondary border-warning text-white" id="message" name="message" rows="4" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-warning">Enviar Consulta</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-center text-md-start">
+        <p class="mb-0">&copy; 2025 Artes con S</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <div class="d-flex justify-content-center justify-content-md-end gap-3">
+          <a href="#" class="text-white text-decoration-none">
+            <i class="fab fa-facebook-f"></i> Facebook
+          </a>
+          <a href="#" class="text-white text-decoration-none">
+            <i class="fab fa-instagram"></i> Instagram
+          </a>
+          <a href="#" class="text-white text-decoration-none">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+          <a href="#" class="text-white text-decoration-none">
+            <i class="fab fa-tiktok"></i> TikTok
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal Personalización -->
+<div class="modal fade" id="modalPersonalizacion" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content text-light">
+      <div class="modal-header">
+        <h5 class="modal-title">Personaliza tu pedido</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formPersonalizacion" action="https://formspree.io/f/free" method="POST">
+          <input type="hidden" id="tipoProductoModal" name="tipo_producto" value="">
+          <div class="mb-4">
+            <label for="nombreCliente" class="form-label">Nombre completo:</label>
+            <input type="text" class="form-control" id="nombreCliente" name="nombre_completo" placeholder="Ingresa tu nombre completo" required>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-6" id="orientacionContainer">
+              <label for="orientacionSelect" class="form-label">Orientación:</label>
+              <select id="orientacionSelect" name="orientacion" class="form-select">
+                <option value="Vertical">Vertical</option>
+                <option value="Horizontal">Horizontal</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="medidasSelect" class="form-label">Medidas:</label>
+              <select id="medidasSelect" name="medidas" class="form-select">
+                <option value="30x40">30x40 cm</option>
+                <option value="40x60">40x60 cm</option>
+                <option value="60x90">60x90 cm</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="archivoReferencia" class="form-label">Imagen de referencia:</label>
+            <input type="file" id="archivoReferencia" name="imagen_referencia" class="form-control" accept="image/*">
+            <div class="form-text text-muted">Sube una imagen para ayudarnos a entender tu visión</div>
+          </div>
+          <div class="mb-4">
+            <label for="emailCliente" class="form-label">Correo electrónico:</label>
+            <input type="email" class="form-control" id="emailCliente" name="correo_electronico" placeholder="tu@email.com" required>
+          </div>
+          <div class="mb-4">
+            <label for="telefonoCliente" class="form-label">Número de teléfono:</label>
+            <input type="tel" class="form-control" id="telefonoCliente" name="numero_telefono" placeholder="+52 55 1234 5678">
+          </div>
+          <div class="mb-4">
+            <label for="descripcionCliente" class="form-label">Descripción adicional:</label>
+            <textarea class="form-control" id="descripcionCliente" name="descripcion_adicional" rows="3" placeholder="Detalles adicionales sobre tu pedido..."></textarea>
+          </div>
+          <div class="canvas-container">
+            <label class="form-label">Vista previa de tu producto:</label>
+            <div class="text-center mb-2">
+              <small class="text-muted">Dimensiones seleccionadas: <span id="dimensionesMostradas">30x40 cm</span></small>
+            </div>
+            <canvas id="canvasVista" class="w-100" style="max-width: 100%; height: 300px;"></canvas>
+            <p id="orientacion" class="text-center mb-0 mt-2"></p>
+            <div class="text-center mt-3">
+              <small class="text-muted">
+                <i class="fas fa-info-circle"></i> Haz clic y arrastra para mover la imagen. 
+                Arrastra desde las esquinas para redimensionar.
+              </small>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <i class="fas fa-times"></i> Cancelar
+        </button>
+        <button type="button" class="btn btn-warning" onclick="enviarPedido()">
+          <i class="fas fa-paper-plane"></i> Enviar Pedido
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  // Initialize EmailJS with your public key
+  (function(){
+    emailjs.init("YOUR_PUBLIC_KEY_HERE"); // Replace with your EmailJS public key
+  })();
+  
+  window.addEventListener("scroll", function() {
+    const navbar = document.querySelector(".custom-navbar");
+    if (window.scrollY > 50) navbar.classList.add("scrolled");
+    else navbar.classList.remove("scrolled");
+  });
+
+  const canvas = document.getElementById('canvasVista');
+  const ctx = canvas.getContext('2d');
+  const orientacionText = document.getElementById('orientacion');
+  const medidasSelect = document.getElementById('medidasSelect');
+  const orientacionSelect = document.getElementById('orientacionSelect');
+  const archivoInput = document.getElementById('archivoReferencia');
+
+  let tipoProducto = '';
+  let imagenReferencia = new Image();
+  let imgX = 0, imgY = 0, imgScale = 1;
+  let dragging = false, resizing = false;
+  let dragStart = {x:0,y:0};
+
+  function actualizarVista(){
+    // Dimensiones fijas para la vista previa de piñatas
+    const FIXED_PREVIEW_WIDTH = 50;
+    const FIXED_PREVIEW_HEIGHT = 50;
+    
+    // Actualizar texto de dimensiones
+    let displayWidth, displayHeight;
+    let realWidth, realHeight;
+    
+    // Determinar dimensiones según el tipo de producto y las medidas seleccionadas
+    if (tipoProducto === 'pinata') {
+      // Para piñatas, usar dimensiones reales para mostrar
+      switch(medidasSelect.value) {
+        case 'pequena':
+          realWidth = 30;
+          realHeight = 30;
+          break;
+        case 'mediana':
+          realWidth = 50;
+          realHeight = 50;
+          break;
+        case 'grande':
+          realWidth = 70;
+          realHeight = 70;
+          break;
+        default:
+          realWidth = 50;
+          realHeight = 50;
+      }
+      
+      // Usar dimensiones fijas para la vista previa
+      displayWidth = FIXED_PREVIEW_WIDTH;
+      displayHeight = FIXED_PREVIEW_HEIGHT;
+    } else {
+      // Para pinturas, usar las dimensiones actuales
+      const medidas = medidasSelect.value.split('x');
+      displayWidth = parseInt(medidas[0]);
+      displayHeight = parseInt(medidas[1]);
+      if(orientacionSelect.value==="Horizontal") [displayWidth,displayHeight]=[displayHeight,displayWidth];
+      
+      // Para pinturas, las dimensiones reales son las mismas que las de display
+      realWidth = displayWidth;
+      realHeight = displayHeight;
+    }
+    
+    // Ajustar canvas al tamaño del contenedor
+    const container = canvas.parentElement;
+    const containerWidth = container.clientWidth - 40; // Restar padding
+    
+    canvas.width = containerWidth;
+    
+    // Para pinturas, ajustar la altura del canvas según las dimensiones seleccionadas
+    // Para piñatas, mantener altura fija
+    if (tipoProducto === 'pinata') {
+      canvas.height = 300; // Altura fija para piñatas
+    } else {
+      // Calcular altura proporcional para pinturas
+      const aspectRatio = displayHeight / displayWidth;
+      canvas.height = Math.min(containerWidth * aspectRatio, 500); // Máximo 500px de altura
+    }
+    
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    
+    const padding = 20;
+    
+    let previewDisplayWidth, previewDisplayHeight, previewX, previewY;
+    
+    if (tipoProducto === 'pinata') {
+      // Para piñatas, mantener el área de vista previa fija
+      const scaleX = (canvas.width - 2*padding) / FIXED_PREVIEW_WIDTH;
+      const scaleY = (canvas.height - 2*padding) / FIXED_PREVIEW_HEIGHT;
+      const scale = Math.min(scaleX, scaleY);
+
+      previewDisplayWidth = FIXED_PREVIEW_WIDTH * scale;
+      previewDisplayHeight = FIXED_PREVIEW_HEIGHT * scale;
+      previewX = (canvas.width - previewDisplayWidth)/2;
+      previewY = (canvas.height - previewDisplayHeight)/2;
+    } else {
+      // Para pinturas, hacer que el área de vista previa se ajuste a las dimensiones
+      const maxWidth = canvas.width - 2*padding;
+      const maxHeight = canvas.height - 2*padding;
+      
+      // Calcular dimensiones manteniendo la proporción
+      const aspectRatio = displayWidth / displayHeight;
+      let width, height;
+      
+      if (maxWidth / aspectRatio <= maxHeight) {
+        width = maxWidth;
+        height = maxWidth / aspectRatio;
+      } else {
+        height = maxHeight;
+        width = maxHeight * aspectRatio;
+      }
+      
+      previewDisplayWidth = width;
+      previewDisplayHeight = height;
+      previewX = (canvas.width - previewDisplayWidth)/2;
+      previewY = (canvas.height - previewDisplayHeight)/2;
+    }
+
+    // Dibujar fondo del producto con transparencia
+    ctx.fillStyle = 'rgba(245, 208, 118, 0.3)';
+    ctx.fillRect(previewX, previewY, previewDisplayWidth, previewDisplayHeight);
+    
+    // Agregar borde del producto
+    ctx.strokeStyle = '#f5d076';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(previewX, previewY, previewDisplayWidth, previewDisplayHeight);
+    
+    if(imagenReferencia.complete && imagenReferencia.src){
+      const imgW = imagenReferencia.width * imgScale;
+      const imgH = imagenReferencia.height * imgScale;
+      const imgLeft = canvas.width/2 - imgW/2 + imgX;
+      const imgTop = canvas.height/2 - imgH/2 + imgY;
+      
+      // Dibujar la imagen
+      ctx.drawImage(imagenReferencia, imgLeft, imgTop, imgW, imgH);
+      
+      // Dibujar handles de redimensionamiento si la imagen está seleccionada
+      if (dragging || resizing) {
+        ctx.fillStyle = '#f5d076';
+        ctx.strokeStyle = '#0b1d3a';
+        ctx.lineWidth = 1;
+        
+        // Esquinas
+        const handles = [
+          {x: imgLeft, y: imgTop},           // nw
+          {x: imgLeft + imgW, y: imgTop},    // ne
+          {x: imgLeft, y: imgTop + imgH},    // sw
+          {x: imgLeft + imgW, y: imgTop + imgH} // se
+        ];
+        
+        handles.forEach(handle => {
+          ctx.beginPath();
+          ctx.arc(handle.x, handle.y, 5, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+        });
+      }
+    }
+    
+    // Dibujar límites del área del producto (zona donde debe estar la imagen)
+    // Para piñatas, dibujar límites más suaves
+    if (tipoProducto === 'pinata') {
+      ctx.strokeStyle = 'rgba(245, 208, 118, 0.3)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([5, 3]);
+      ctx.strokeRect(previewX, previewY, previewDisplayWidth, previewDisplayHeight);
+      ctx.setLineDash([]);
+    } else {
+      // Para pinturas, dibujar límites normales
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([10, 5]);
+      ctx.strokeRect(previewX, previewY, previewDisplayWidth, previewDisplayHeight);
+      ctx.setLineDash([]);
+    }
+
+    // Mostrar información de dimensiones
+    if (tipoProducto === 'pinata') {
+      document.getElementById('dimensionesMostradas').textContent = `${medidasSelect.value} (aprox. ${realWidth}cm)`;
+      orientacionText.textContent = `Tipo: Piñata | Tamaño: ${medidasSelect.value}`;
+    } else {
+      document.getElementById('dimensionesMostradas').textContent = `${displayWidth}x${displayHeight} cm`;
+      orientacionText.textContent = `Orientación: ${orientacionSelect.value} | Medidas: ${displayWidth}x${displayHeight} cm`;
+    }
+  }
+
+  medidasSelect.addEventListener('change', actualizarVista);
+  orientacionSelect.addEventListener('change', actualizarVista);
+
+  archivoInput.addEventListener('change', function(){
+    if(this.files && this.files[0]){
+      const reader = new FileReader();
+      reader.onload = function(e){
+        imagenReferencia.onload = function(){
+          imgX=0; imgY=0; imgScale=1;
+          actualizarVista();
+        }
+        imagenReferencia.src = e.target.result;
+      }
+      reader.readAsDataURL(this.files[0]);
+    }
+  });
+
+  // Actualizar vista cuando se redimensione la ventana
+  window.addEventListener('resize', actualizarVista);
+
+  // Variables para redimensionamiento
+  let resizeHandle = null;
+  const HANDLE_SIZE = 5;
+  
+  // Mover imagen y redimensionar
+  canvas.addEventListener('mousedown', e=>{
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // Verificar si se hizo clic en un handle de redimensionamiento
+    resizeHandle = getResizeHandle(x, y);
+    
+    if (resizeHandle) {
+      resizing = true;
+      dragStart = {x: x, y: y};
+    } else {
+      // Mover imagen
+      dragStart = {x: x - imgX, y: y - imgY};
+      dragging = true;
+    }
+  });
+  
+  canvas.addEventListener('mouseup', ()=>{
+    dragging = false;
+    resizing = false;
+    resizeHandle = null;
+  });
+  
+  canvas.addEventListener('mouseleave', ()=>{
+    dragging = false;
+    resizing = false;
+    resizeHandle = null;
+  });
+  
+  canvas.addEventListener('mousemove', e=>{
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    if (dragging && !resizing) {
+      // Mover imagen
+      imgX = x - dragStart.x;
+      imgY = y - dragStart.y;
+      actualizarVista();
+    } else if (resizing && resizeHandle) {
+      // Redimensionar imagen
+      resizeImage(x, y, resizeHandle);
+      actualizarVista();
+    } else {
+      // Cambiar cursor según la posición
+      const handle = getResizeHandle(x, y);
+      if (handle) {
+        canvas.style.cursor = getCursorForHandle(handle);
+      } else {
+        canvas.style.cursor = 'move';
+      }
+    }
+  });
+
+  // Zoom con rueda
+  canvas.addEventListener('wheel', e=>{
+    e.preventDefault();
+    const factor = e.deltaY<0 ? 1.05 : 0.95;
+    imgScale *= factor;
+    if(imgScale<0.1) imgScale=0.1;
+    if(imgScale>5) imgScale=5;
+    actualizarVista();
+  });
+  
+  // Función para obtener el handle de redimensionamiento
+  function getResizeHandle(x, y) {
+    if (!imagenReferencia.complete || !imagenReferencia.src) return null;
+    
+    const imgW = imagenReferencia.width * imgScale;
+    const imgH = imagenReferencia.height * imgScale;
+    const imgLeft = canvas.width/2 - imgW/2 + imgX;
+    const imgTop = canvas.height/2 - imgH/2 + imgY;
+    const imgRight = imgLeft + imgW;
+    const imgBottom = imgTop + imgH;
+    
+    // Verificar esquinas
+    if (Math.abs(x - imgLeft) <= HANDLE_SIZE && Math.abs(y - imgTop) <= HANDLE_SIZE) {
+      return 'nw';
+    } else if (Math.abs(x - imgRight) <= HANDLE_SIZE && Math.abs(y - imgTop) <= HANDLE_SIZE) {
+      return 'ne';
+    } else if (Math.abs(x - imgLeft) <= HANDLE_SIZE && Math.abs(y - imgBottom) <= HANDLE_SIZE) {
+      return 'sw';
+    } else if (Math.abs(x - imgRight) <= HANDLE_SIZE && Math.abs(y - imgBottom) <= HANDLE_SIZE) {
+      return 'se';
+    }
+    
+    return null;
+  }
+  
+  // Función para redimensionar la imagen
+  function resizeImage(x, y, handle) {
+    if (!imagenReferencia.complete || !imagenReferencia.src) return;
+    
+    const imgW = imagenReferencia.width * imgScale;
+    const imgH = imagenReferencia.height * imgScale;
+    const imgLeft = canvas.width/2 - imgW/2 + imgX;
+    const imgTop = canvas.height/2 - imgH/2 + imgY;
+    
+    let newWidth, newHeight;
+    
+    switch (handle) {
+      case 'nw': // Esquina superior izquierda
+        newWidth = imgW + (imgLeft - x);
+        newHeight = imgH + (imgTop - y);
+        imgX += imgW - newWidth;
+        imgY += imgH - newHeight;
+        break;
+      case 'ne': // Esquina superior derecha
+        newWidth = x - imgLeft;
+        newHeight = imgH + (imgTop - y);
+        imgY += imgH - newHeight;
+        break;
+      case 'sw': // Esquina inferior izquierda
+        newWidth = imgW + (imgLeft - x);
+        newHeight = y - imgTop;
+        imgX += imgW - newWidth;
+        break;
+      case 'se': // Esquina inferior derecha
+        newWidth = x - imgLeft;
+        newHeight = y - imgTop;
+        break;
+    }
+    
+    // Mantener proporciones de la imagen original
+    if (newWidth > 0 && newHeight > 0) {
+      const aspectRatio = imagenReferencia.width / imagenReferencia.height;
+      const newAspectRatio = newWidth / newHeight;
+      
+      if (newAspectRatio > aspectRatio) {
+        newWidth = newHeight * aspectRatio;
+      } else {
+        newHeight = newWidth / aspectRatio;
+      }
+      
+      imgScale = newWidth / imagenReferencia.width;
+    }
+  }
+  
+  // Función para obtener el cursor según el handle
+  function getCursorForHandle(handle) {
+    switch (handle) {
+      case 'nw': return 'nw-resize';
+      case 'ne': return 'ne-resize';
+      case 'sw': return 'sw-resize';
+      case 'se': return 'se-resize';
+      default: return 'move';
+    }
+  }
+
+  function abrirModal(tipo){
+    tipoProducto = tipo;
+    const modal = new bootstrap.Modal(document.getElementById('modalPersonalizacion'));
+    modal.show();
+    document.getElementById('tipoProductoModal').value=tipo;
+    document.getElementById('formPersonalizacion').reset();
+    imagenReferencia.src='';
+    imgX=0; imgY=0; imgScale=1;
+    
+    // Cambiar las medidas según el tipo de producto
+    const medidasSelect = document.getElementById('medidasSelect');
+    const orientacionContainer = document.getElementById('orientacionContainer');
+    
+    // Limpiar opciones actuales
+    medidasSelect.innerHTML = '';
+    
+    if (tipo === 'pinata') {
+      // Medidas para piñatas
+      const opcionesPinata = [
+        {valor: 'pequena', texto: 'Pequeña'},
+        {valor: 'mediana', texto: 'Mediana'},
+        {valor: 'grande', texto: 'Grande'}
+      ];
+      
+      opcionesPinata.forEach(opcion => {
+        const option = document.createElement('option');
+        option.value = opcion.valor;
+        option.textContent = opcion.texto;
+        medidasSelect.appendChild(option);
+      });
+      
+      // Ocultar orientación para piñatas
+      orientacionContainer.style.display = 'none';
+    } else {
+      // Medidas para pinturas
+      const opcionesPintura = [
+        {valor: '30x40', texto: '30x40 cm'},
+        {valor: '40x60', texto: '40x60 cm'},
+        {valor: '60x90', texto: '60x90 cm'}
+      ];
+      
+      opcionesPintura.forEach(opcion => {
+        const option = document.createElement('option');
+        option.value = opcion.valor;
+        option.textContent = opcion.texto;
+        medidasSelect.appendChild(option);
+      });
+      
+      // Mostrar orientación para pinturas
+      orientacionContainer.style.display = 'block';
+    }
+    
+    // Esperar un momento para que el modal se renderice completamente
+    setTimeout(actualizarVista, 100);
+  }
+
+  function enviarPedido(){
+    const nombre=document.getElementById('nombreCliente').value;
+    const email=document.getElementById('emailCliente').value;
+    const telefono=document.getElementById('telefonoCliente').value;
+    const medidas=medidasSelect.value;
+    const orientacion=orientacionSelect.value;
+    const descripcion=document.getElementById('descripcionCliente').value;
+
+    if(!nombre || !email){ 
+      alert("Completa el nombre y correo electrónico"); 
+      return; 
+    }
+    
+    // Submit the form to Formspree
+    const form = document.getElementById('formPersonalizacion');
+    const formData = new FormData(form);
+    
+    fetch('https://formspree.io/f/free', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        alert(`¡Pedido de ${tipoProducto} enviado exitosamente!
+Nombre: ${nombre}
+Correo: ${email}
+Medidas: ${medidas}
+Orientación: ${orientacion}`);
+        const modalEl=document.getElementById('modalPersonalizacion');
+        const modal=bootstrap.Modal.getInstance(modalEl);
+        modal.hide();
+        form.reset();
+      } else {
+        alert("Hubo un error al enviar el pedido. Por favor inténtalo de nuevo.");
+      }
+    }).catch(error => {
+      alert("Hubo un error al enviar el pedido. Por favor inténtalo de nuevo.");
+    });
+  }
+
+</script>
+</body>
+</html>
